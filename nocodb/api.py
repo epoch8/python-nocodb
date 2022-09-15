@@ -16,6 +16,7 @@ class NocoDBAPI:
         )
         self.__base_meta_uri = (
             f"{base_uri}/{NocoDBAPIUris.V1_DB_META_PREFIX.value}"
+        )
         self.__base_auth_uri = (
             f"{base_uri}/{NocoDBAPIUris.V1_AUTH_USER_PREFIX.value}"
         )
