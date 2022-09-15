@@ -4,7 +4,9 @@ from .nocodb import NocoDBProject
 
 class NocoDBAPIUris(Enum):
     V1_DB_DATA_PREFIX = "api/v1/db/data"
+    V1_DB_META_PREFIX = "api/v1/db/meta"
     V1_AUTH_USER_PREFIX = "api/v1/auth/user"
+
 
 
 class NocoDBAPI:
@@ -12,6 +14,8 @@ class NocoDBAPI:
         self.__base_data_uri = (
             f"{base_uri}/{NocoDBAPIUris.V1_DB_DATA_PREFIX.value}"
         )
+        self.__base_meta_uri = (
+            f"{base_uri}/{NocoDBAPIUris.V1_DB_META_PREFIX.value}"
         self.__base_auth_uri = (
             f"{base_uri}/{NocoDBAPIUris.V1_AUTH_USER_PREFIX.value}"
         )
@@ -63,5 +67,15 @@ class NocoDBAPI:
                 str(row_id),
                 relation_type,
                 column_name,
+            )
+        )
+
+    def get_project_uri(
+        self,
+    ) -> str:
+        return "/".join(
+            (
+                self.__base_meta_uri,
+                "projects"
             )
         )
